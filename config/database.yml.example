@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username:
+  password:
+
+development:
+  <<: *default
+  database: garage-tools-hr_development
+
+test:
+  <<: *default
+  database: garage-tools-hr_test
+
+production:
+  <<: *default
+  database: garage-tools-hr_production
+  username: garage-tools-hr
+  password: <%= ENV['GARAGE-TOOLS-HR_DATABASE_PASSWORD'] %>
