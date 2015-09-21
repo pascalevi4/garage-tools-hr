@@ -1,0 +1,21 @@
+= form_for @vacancy do |f|
+  = render 'shared/errors', entity: @vacancy
+  %div
+    = f.label :title
+    = f.text_field :title
+  %div
+    = f.label :expires_at
+    = f.date_field :expires_at
+  %div
+    = f.label :salary
+    = f.text_field :salary
+  %div
+    = f.label :contacts
+    = f.text_field :contacts
+
+  %div
+    %input.js-skills-list{id: "skills_list", multiple: true, value: "#{@vacancy.skills.pluck(:title).join(', ')}", name: 'vacancy[skills]' }
+
+  %div
+    = f.submit
+

@@ -1,0 +1,8 @@
+%li
+  = link_to vacancy.title, vacancy_path(vacancy)
+  з/п
+  = vacancy.salary
+  до
+  = vacancy.expires_at.strftime("%d.%m.%Y")
+  skills:
+  = vacancy.skills.map(&:title).join(', ')

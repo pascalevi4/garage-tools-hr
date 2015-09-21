@@ -1,0 +1,26 @@
+= link_to 'Назад', root_path
+|
+= link_to 'Добавить', new_vacancy_path
+%h1 Вакансии
+%ul
+  - @vacancies.each do |vacancy|
+    %li
+      .title
+        = link_to vacancy.title, vacancy_path(vacancy)
+        = link_to '(edit)', edit_vacancy_path(vacancy)
+      .salary
+        З/п
+        = vacancy.salary
+        руб.
+      .dates
+        Размещена
+        = vacancy.created_at.strftime("%d.%m.%Y")
+        до
+        = vacancy.expires_at.strftime("%d.%m.%Y")
+      .contacts
+        Контакты:
+        = vacancy.contacts
+      .skills
+        Умения:
+        = vacancy.skills.map(&:title).join(', ')
+

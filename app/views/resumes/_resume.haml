@@ -1,0 +1,6 @@
+%li
+  = link_to resume.fio, resume_path(resume)
+  з/п
+  = resume.salary
+  skills:
+  = resume.skills.map(&:title).join(', ')

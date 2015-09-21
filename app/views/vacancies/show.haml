@@ -1,0 +1,32 @@
+= link_to 'Назад', vacancies_path
+|
+= link_to 'Редактировать', edit_vacancy_path(@vacancy)
+%h1
+  Вакансия:
+  = @vacancy.title
+
+.salary
+  З/п
+  = @vacancy.salary
+  руб.
+.dates
+  Размещена
+  = @vacancy.created_at.strftime("%d.%m.%Y")
+  до
+  = @vacancy.expires_at.strftime("%d.%m.%Y")
+.contacts
+  Контакты:
+  = @vacancy.contacts
+.skills
+  Умения:
+  = @vacancy.skills.pluck(:title).join(', ')
+
+%h2 Подходящие резюме
+%ul
+  - @full_intersect_resumes.each do |resume|
+    = render resume
+
+%h2 Частично-подходящие резюме
+%ul
+  - @partial_intersect_resumes.each do |resume|
+    = render resume

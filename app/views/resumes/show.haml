@@ -1,0 +1,30 @@
+= link_to 'Назад', resumes_path
+|
+= link_to 'Редактировать', edit_resume_path(@resume)
+%h1
+  Резюме:
+  = @resume.fio
+.state
+  Статус:
+  = @resume.state
+.salary
+  З/п
+  = @resume.salary
+  руб.
+.contacts
+  Контакты:
+  = @resume.contacts
+.skills
+  Умения:
+  = @resume.skills.map(&:title).join(', ')
+
+
+%h2 Подходящие вакансии
+%ul
+  - @full_intersect_vacancies.each do |vacancy|
+    = render vacancy
+
+%h2 Частично-подходящие вакансии
+%ul
+  - @partial_intersect_vacancies.each do |vacancy|
+    = render vacancy
