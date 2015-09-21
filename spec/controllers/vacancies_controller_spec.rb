@@ -143,7 +143,7 @@ RSpec.describe VacanciesController, type: :controller do
 
     context 'there is resume with state busy' do
       before do
-        busy_resume = FactoryGirl.create :resume
+        busy_resume = FactoryGirl.create :resume, state: :busy
         busy_resume.skills << [read_skill, write_skill]
       end
 
